@@ -1,0 +1,60 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+.root{
+    display: flex;
+    justify-content: center;
+    background-color: #c8d6e5;
+    padding: 20px;
+}
+ .myframe{
+     width:60%;
+     background-color: #ffffff;
+     padding: 20px;
+     border-radius: 10px;
+     margin-top: 50px;
+ }
+ </style>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sub-Categories</title>
+</head>
+<body style="background-color: #c8d6e5">
+<div class="root">
+<div class="myframe">
+<div class="row" style="padding-left:20px;font-size:18px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center;justify-content: center;>                      ">
+        <img src="/static/subcategory.png" width="40">
+        &nbsp;List Of Sub-Categories
+    </div>
+<table class="table" style="margin-top: 8px;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Category ID</th>
+        <th>Sub-Category ID</th>
+      <th>Sub-Category Name</th>
+        <th>Description</th>
+        <th>Category Image</th>
+        <th>Update</th>
+
+    </tr>
+  </thead>
+    {% for row in rows %}
+    <tr>
+    <td>{{ row.0 }}</td>
+        <td>{{ row.1 }}</td>
+        <td>{{ row.2 }}</td>
+        <td>{{ row.3 }}</td>
+        <td><a href="/displaysubcategorypic?scid={{ row.1 }}&subcategoryname={{ row.2 }}&subcategorypic={{ row.4 }}"><img src="/static/SubCategoryImages/{{ row.4 }}" width="50"></a></td>
+    <td><div style="margin-top: 20px;margin-right: 10px;"><a href="/displaysubcategorybyid?scid={{ row.1 }}" class="btn btn-secondary btn-lg active" role="button" aria-disabled="true" style="display: flex;align-items: center;height: 30px;justify-content: center;font-size: 15px">Edit/Delete</a></div></td>
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</body>
+</html>
+

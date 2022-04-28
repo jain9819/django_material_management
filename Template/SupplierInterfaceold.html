@@ -1,0 +1,93 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+.root{
+    display: flex;
+    justify-content: center;
+    background-color: #c8d6e5;
+    padding: 20px;
+}
+ .myframe{
+     width:600px;
+     background-color: #ffffff;
+     padding: 20px;
+     border-radius: 10px;
+     margin-top: 100px;
+ }
+    .gap{
+        margin-top: 15px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/static/JavaScript/project.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier</title>
+</head>
+<form action="/suppliersubmit">
+<body style="background-color:#c8d6e5 ">
+<div class="root">
+<div class="myframe">
+    <div class="row" style="padding-left:20px;font-size:14px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center">
+        <img src="/static/supplier.png" width="30">
+        Supplier Register
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="text" name="suppliername" class="form-control" placeholder="Supplier Name">
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="text" class="form-control" name="lnumber" placeholder="Landline Number">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" name="mnumber" placeholder="Mobile Number">
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="email" name="email" class="form-control" placeholder="E-mail Address">
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="text" name="address" class="form-control" placeholder="Address">
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <select name="state" id="state" class="form-control">
+                <option>-Select State-</option>
+            </select>
+        </div>
+        <div class="col">
+            <select name="city" id="city" class="form-control">
+                <option>-Select City-</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="row gap" >
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="submit" class="btn btn-primary w-100">Save</button>
+        </div>
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="reset" class="btn btn-primary w-100">Reset</button>
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col" style="display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;">
+             {{ msg }}
+        </div>
+    </div>
+
+
+</div>
+</div>
+</body>
+</form>
+</html>
+

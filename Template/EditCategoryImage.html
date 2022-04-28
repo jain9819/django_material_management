@@ -1,0 +1,73 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+.root{
+    display: flex;
+    justify-content: center;
+    background-color: #c8d6e5;
+    padding: 20px;
+}
+ .myframe{
+     width:600px;
+     background-color: #ffffff;
+     padding: 20px;
+     border-radius: 10px;
+     margin-top: 50px;
+ }
+    .gap{
+        margin-top: 10px;
+    }
+</style>
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/static/JavaScript/project.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<form action="/savecategoryimage" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="hidden" value="{{ row.0 }}" name="cid">
+    <input type="hidden" value="{{ row.2 }}" name="oldpic">
+<body style="background-color:#c8d6e5 ">
+<div class="root">
+<div class="myframe">
+
+    <div class="row" style="padding-left:20px;font-size:18px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center;justify-content: center">
+        <img src="/static/editimg.png" width="40">
+         &nbsp;Edit Category Image
+    </div>
+     <div class="row" >
+        <div class="col" style="display: flex;justify-content: center;font-size:18px;font-weight:bold">
+            {{ row.1 }}
+        </div>
+     </div>
+     <div class="row gap">
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+            <img src="/static/CategoryImages/{{ row.2}}" width="30%">
+        </div>
+     </div>
+    <div class="row" >
+        <div class="col" style="display: flex;justify-content: center;font-size:18px;font-weight:bold">
+            Select Image You Want To Update
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+        <input type="file" required accept="image/*" id="picture" name="picture">
+        </div>
+    </div>
+    <div class="row gap" style="display: flex;justify-content: center">
+           <img src="/static/imgs.png" id="pic" width="100" height="100"/>
+        </div>
+    <div class="row gap">
+    <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="submit" class="btn btn-primary w-50">Set Image</button>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</form>
+</html>

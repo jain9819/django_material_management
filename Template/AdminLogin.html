@@ -1,0 +1,94 @@
+<style type="text/css">
+    .myframe{
+
+        margin-top:150px;
+        width:400px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px 5px;
+
+
+
+    }
+
+    .root{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+
+    }
+    .gap{
+        margin-top: 20px;
+    }
+.car{
+    background-image: url('/static/wow.jpg');
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Material Management[Admin Login]</title>
+</head>
+
+<form action="/checklogin">
+
+<body class="car">
+
+<div class="root">
+
+    <div class="row" style="display: flex;align-content: center; margin-top: 65px;width: 50%; margin-left: 100px;">
+
+        <div class="col">
+            <img src="/static/still.png" width="100%" style="border-radius: 10px;margin-top: 8px;margin-left: -120px">
+        </div>
+    </div>
+
+
+
+  <div class="myFrame">
+
+      <div class="row" style="display: flex;align-items: center; padding-left:20px; margin-bottom:10px; font-weight:bold;font-size: 20px;letter-spacing: 2px;justify-content: center">
+          <img src="/static/mzt.png" width="40">
+          &nbsp;<label style="font-family: 'ROG Fonts';">Admin Login</label>
+      </div>
+
+      <div class="form-group" style="margin-inside: 10px; margin-top: 20px">
+
+          <i class="fas fa-user-shield" style="padding-left: 5px"></i>&nbsp;<label for="formGroupExampleInput"><b>Admin User</b></label>
+          <input type="email" name="emailid" class="form-control">
+
+      </div>
+
+
+       <div class="form-group">
+
+           <i class="fas fa-key" style="padding-left: 5px"></i>&nbsp;<label for="formGroupExampleInput"><b>Password</b></label>
+          <input type="password" name="password" class="form-control">
+
+       </div>
+
+      <div class="row gap">
+
+          <div class="col" style="display: flex; align-content: center;justify-content: center;">
+              <button type="submit" class="btn btn-primary w-100;" id="lolo" name="lolo">Login</button><br>
+          </div>
+      </div>
+      <div class="row gap">
+
+          <div class="col" style="display: flex; align-content: center;justify-content: center;">
+              {{ msg }}
+          </div>
+      </div>
+
+  </div>
+
+</div>
+</body>
+</form>
+</html>

@@ -1,0 +1,291 @@
+<style type="text/css" xmlns="http://www.w3.org/1999/html">
+.root{
+    display: flex;
+    justify-content: center;
+    background-color: #c8d6e5;
+    padding: 10px;
+}
+ .myframe{
+     width:90%;
+     background-color: #ffffff;
+     padding: 20px;
+     border-radius: 10px;
+     margin-top: 50px;
+ }
+    .gap{
+        margin-top: 20px;
+    }
+ </style>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/static/JavaScript/Units.js"></script>
+<script src="/static/JavaScript/FinalProduct.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body style="background-color: #c8d6e5">
+<div class="root">
+<div class="myframe">
+<div class="row" style="padding-left:20px;font-size:18px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center;justify-content: center;>                      ">
+        <img src="/static/product.png" width="40">
+        List Of Final Products
+    </div>
+<table class="table" style="margin-top: 8px;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Category ID</th>
+        <th>Sub-Category ID</th>
+        <th>Product ID</th>
+        <th>Final Product ID</th>
+      <th>Final Product Name</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Weight</th>
+        <th>Stocks</th>
+        <th>Price</th>
+        <th>Picture</th>
+        <th>Edit/Delete</th>
+
+
+    </tr>
+  </thead>
+    {% for row in rows %}
+    <tr>
+        <td>{{ row.0 }}</td>
+        <td>{{ row.1 }}</td>
+        <td>{{ row.2 }}</td>
+        <td>{{ row.3 }}</td>
+        <td>{{ row.4 }}</td>
+        <td>{{ row.5 }}</td>
+        <td>{{ row.6 }}{{ row.13 }}</td>
+        <td>{{ row.8 }}{{ row.14 }}</td>
+        <td>{{ row.10 }}</td>
+        <td>{{ row.11 }}</td>
+
+        <td><a class="modal-image" data-target = "#modal1" data="{{ row }}"><img src="/static/FinalProductImages/{{ row.12 }}" width="50"></a></td>
+    <td><div style="margin-top: 20px;margin-right: 10px;"><a class = "button is-secondary modal-button" data="{{ row }}" data-target = "#modal" style="display: flex;align-items: center;height: 30px;justify-content: center;font-size: 15px">Edit/Delete</a></div></td>
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</body>
+
+       {#UPDATE FINAL PRODUCT#}
+<div id = "modal" class = "modal">
+    <div class = "modal-background"></div>
+    <div class = "modal-content" style="width: 700px;background-color: #c8d6e5;">
+        <form action="/editdeletefinal">
+    <input type="hidden" value="{{ row.3 }}" name="fpid" id="fpid">
+        <input type="hidden" value="{{ row.12 }}" name="oldpic" id="oldpic">
+<body style="background-color:#c8d6e5 ">
+<div class="root">
+<div class="myframe">
+    <div class="row" style="padding-left:20px;font-size:16px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center">
+        <img src="/static/finalproduct.png" width="40">
+        &nbsp;Edit Final Product
+    </div>
+    <div class="row gap">
+        <div class="col">
+            <select id="categoryid" name="categoryid" class="form-control">
+            </select>
+        </div>
+        <div class="col">
+            <select id="subcategoryid" name="subcategoryid" class="form-control">
+            </select>
+        </div>
+        <div class="col">
+            <select id="productid" name="productid" class="form-control">
+            </select>
+        </div>
+    </div>
+    <div class="row gap">
+        <div class="col">
+            <input type="text" id="finalproductname" class="form-control" name="finalproductname" placeholder="Final Product Name">
+        </div>
+        <div class="col">
+            <input type="text" id="color" class="form-control" name="color" placeholder="Colour">
+        </div>
+
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="text" class="form-control" id="sizee" name="sizee" placeholder="Size">
+        </div>
+        <div class="col">
+            <select id="sizeunit" name="sizeunit" class="form-control">
+                <option>-Select unit-</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" id="weight" name="weight" placeholder="Weight">
+        </div>
+            <div class="col">
+            <select id="weightunit" name="weightunit" class="form-control">
+                <option>-Select unit-</option>
+            </select>
+            </div>
+    </div>
+    <div class="row gap" >
+        <div class="col">
+            <input type="text" value="0" id="stocks" class="form-control" name="stocks" placeholder="Stocks">
+        </div>
+        <div class="col">
+            <input type="text" id="price" class="form-control" name="price" placeholder="Price">
+        </div>
+
+    </div>
+    <div class="row gap" >
+
+        <div class="col" style="display: flex;align-items: center;justify-content:center;flex-direction:row;">
+
+            &nbsp; <img src="/static/imgs.png" id="pic1" width="80" height="80"/>
+        </div>
+
+    </div>
+    <div class="row gap" >
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="submit" value="Edit" name="btn" class="btn btn-primary w-100">Edit</button>
+        </div>
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="submit" value="Delete" name="btn" class="btn btn-primary w-100">Delete</button>
+        </div>
+    </div>
+
+
+</div>
+</div>
+</body>
+</form>
+
+    </div>
+    <button class = "modal-close is-large" aria-label = "close"></button>
+</div>
+
+    {#UPDATE FINAL PRODUCT IMAGE#}
+<div id = "modal1" class = "modal">
+    <div class = "modal-background"></div>
+    <div class = "modal-content" style="width: 600px;background-color:#c8d6e5">
+        <form action="/savefinalproductimage" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="hidden" id="fpid1" name="fpid1">
+    <input type="hidden" id="oldimg" name="oldimg">
+<body style="background-color:#c8d6e5 ">
+<div class="root">
+<div class="myframe">
+
+    <div class="row" style="padding-left:20px;font-size:18px;font-weight:bold;letter-spacing:2px;display: flex;align-items: center;justify-content: center">
+        <img src="/static/editimg.png" width="40">
+         &nbsp;Edit Final Product Image
+    </div>
+     <div class="row" >
+        <div class="col" style="display: flex;justify-content: center;font-size:18px;font-weight:bold">
+            <div id="finalproductname1"></div>
+        </div>
+     </div>
+     <div class="row gap">
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+            <img  id="pic" width="100" height="100"/>
+        </div>
+     </div>
+    <div class="row" >
+        <div class="col" style="display: flex;justify-content: center;font-size:18px;font-weight:bold">
+            Select Image You Want To Update
+        </div>
+    </div>
+    <div class="row gap" >
+        <div class="col" style="display: flex;justify-content: center;align-items: center">
+        <input type="file" required accept="image/*" id="picture" name="picture">
+        </div>
+    </div>
+    <div class="row gap">
+    <div class="col" style="display: flex;justify-content: center;align-items: center">
+             <button type="submit" class="btn btn-primary w-50">Set Image</button>
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</form>
+    </div>
+    <button class = "modal-close is-large" aria-label = "close"></button>
+</div>
+<script>
+    function setdata(data){
+        data=data.replaceAll("(","")
+             data=data.replaceAll(")","")
+             data=data.replaceAll("'","")
+             data=data.split(",")
+        return data
+    }
+$(".modal-image").click(function() {
+    var target = $(this).data("target");
+    var data=$(this).attr('data');
+    data=setdata(data)
+    $('#fpid1').val(data[3].trim())
+    $('#oldimg').val(data[12].trim())
+    $('#finalproductname1').html(data[4].trim())
+    $('#pic').attr('src','/static/FinalProductImages/'+data[12].trim())
+    $('#picture').change(function(){
+      var file= picture.files[0]
+      pic.src=URL.createObjectURL(file)
+    })
+    $("html").addClass("is-clipped");
+    $(target).addClass("is-active");
+})
+    $(".modal-close").click(function() {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+         });
+</script>
+
+
+
+{#    UPDATE FINAL PRODUCT SCRIPT#}
+
+<script>
+    function setdata(data){
+        data=data.replaceAll("(","")
+             data=data.replaceAll(")","")
+             data=data.replaceAll("'","")
+             data=data.split(",")
+        return data
+    }
+         $(".modal-button").click(function() {
+            var target = $(this).data("target");
+            var data=$(this).attr('data');
+            data=setdata(data)
+             $('#fpid').val(data[3].trim())
+             $('#oldpic').val(data[12].trim())
+             $('#categoryid').append($('<option>').text(data[15]).val(data[0]))
+             $('#subcategoryid').append($('<option>').text(data[16]).val(data[1]))
+             $('#productid').append($('<option>').text(data[17]).val(data[2]))
+             $('#finalproductname').val(data[4].trim())
+             $('#color').val(data[5].trim())
+             $('#sizee').val(data[6].trim())
+             $('#sizeunit').val(data[7].trim())
+             $('#weight').val(data[8].trim())
+             $('#weightunit').val(data[9].trim())
+             $('#stocks').val(data[10].trim())
+             $('#price').val(data[11].trim())
+             $('#pic1').attr('src',"/static/FinalProductImages/"+data[12].trim())
+
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+         });
+
+         $(".modal-close").click(function() {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+         });
+      </script>
+</html>
+
+
